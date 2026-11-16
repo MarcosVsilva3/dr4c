@@ -8,9 +8,9 @@ Use o DR4C somente em sistemas próprios ou com autorização explícita. Em pro
 
 - Linux
 - Python 3.12 ou mais recente
-- Go 1.21 ou mais recente para iniciar o wrapper
+- Go 1.23 ou mais recente
 
-O projeto usa a biblioteca padrão do Python. `scripts/go.sh` seleciona Go 1.27.4 por padrão e mantém o cache em `.venv/go/`; no primeiro uso, o Go pode baixar essa versão. Defina `DR4C_GO_TOOLCHAIN` para escolher outra versão compatível.
+O projeto usa a biblioteca padrão do Python. `scripts/go.sh` usa o Go instalado na máquina por padrão e mantém o cache em `.venv/go/`. Defina `DR4C_GO_TOOLCHAIN` (por exemplo, `go1.24.7` ou `auto`) para que o Go baixe e use outra versão compatível.
 
 ## Instalação
 
@@ -87,3 +87,7 @@ make build
 ```
 
 Consulte [a referência do CLI](docs/CLI_REFERENCE.md), [a arquitetura](docs/ARCHITECTURE.md), [as notas de segurança](docs/SECURITY.md) e [as instruções de desenvolvimento](docs/DEVELOPMENT.md).
+
+## Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE).
