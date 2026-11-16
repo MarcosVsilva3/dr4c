@@ -10,6 +10,7 @@ class DNSResult:
     hostname: str
     addresses: list[str]
     error: str = ""
+    nxdomain: bool = False
 
 
 def resolve(hostname: str) -> DNSResult:
@@ -18,7 +19,22 @@ def resolve(hostname: str) -> DNSResult:
         addresses = sorted({record[4][0] for record in values})
         return DNSResult(hostname, addresses)
     except socket.gaierror as exc:
-        return DNSResult(hostname, [], str(exc))
+        return DNSResult(hostname, [], str(exc), nxdomain=_is_nxdomain(exc))
+
+
+# getaddrinfo error codes meaning "name does not exist" on Linux, macOS and Windows.
+_NXDOMAIN_CODES = {
+    code for code in (
+        getattr(socket, "EAI_NONAME", None),
+        getattr(socket, "EAI_NODATA", None),
+        11001,  # Windows WSAHOST_NOT_FOUND
+        11004,  # Windows WSANO_DATA
+    ) if code is not None
+}
+
+
+def _is_nxdomain(exc: socket.gaierror) -> bool:
+    return exc.errno in _NXDOMAIN_CODES
 
 
 def detect_wildcard(domain: str) -> tuple[bool | None, list[str]]:
@@ -29,7 +45,7 @@ def detect_wildcard(domain: str) -> tuple[bool | None, list[str]]:
         result = resolve(f"dr4c-{secrets.token_hex(8)}.{domain}")
         if result.addresses:
             found.append(set(result.addresses))
-        elif "Name or service not known" not in result.error and "NXDOMAIN" not in result.error:
+        elif not result.nxdomain:
             return None, []
         else:
             found.append(set())
