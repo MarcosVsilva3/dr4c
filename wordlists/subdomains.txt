@@ -1,0 +1,8 @@
+www
+api
+dev
+staging
+app
+mail
+cdn
+static

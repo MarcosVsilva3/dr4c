@@ -1,0 +1,8 @@
+{
+  "authorized": false,
+  "domains": ["your-authorized-domain.example"],
+  "ip_ranges": [],
+  "allowed_ports": [80, 443],
+  "allow_private": false,
+  "allow_port_scan": false
+}

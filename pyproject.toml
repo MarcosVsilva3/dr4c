@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dr4c"
+version = "0.1.0"
+description = "DR4C attack surface discovery and exposure intelligence"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+dr4c = "dr4c.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dr4c*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
