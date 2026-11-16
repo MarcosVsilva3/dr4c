@@ -13,3 +13,15 @@ O resultado inclui domínios e subdomínios, endereços IP, caminhos consultados
 Relatórios ainda podem revelar nomes de alvos, rotas e endereços. Revise-os antes de compartilhar. A pasta `results/` está excluída do Git para reduzir o risco de publicar relatórios por engano.
 
 O DR4C não tem limitador adaptativo para respostas HTTP 429. Se o alvo limitar as requisições, respeite a política aplicável e interrompa ou reduza a atividade conforme autorizado. Um status HTTP ou uma classificação do DR4C, por si só, não confirma uma vulnerabilidade.
+
+## Como reportar uma vulnerabilidade
+
+Se você encontrar uma falha de segurança no DR4C, **não abra uma issue pública**. Entre em contato diretamente comigo pelas redes sociais cadastradas no meu perfil do GitHub: [github.com/MarcosVsilva3](https://github.com/MarcosVsilva3).
+
+Inclua, se possível:
+
+- uma descrição do problema e do impacto;
+- os passos para reproduzir (versão do DR4C, sistema operacional e comando usado);
+- uma sugestão de correção, se tiver.
+
+Peço que a falha não seja divulgada publicamente até que uma correção esteja disponível.
