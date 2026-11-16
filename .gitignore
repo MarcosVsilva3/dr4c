@@ -1,0 +1,17 @@
+.venv/
+scope.json
+scope-*.json
+!scope.example.json
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+results/*
+!results/.gitkeep
+go-engine/dr4c-http
